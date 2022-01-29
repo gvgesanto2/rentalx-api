@@ -5,6 +5,7 @@
   "username": "docker",
   "password": "rentalx",
   "database": "rentalx-db",
+  "entities": ["./src/modules/**/entities/*.ts"],
   "migrations": [
     "./src/database/migrations/*.ts"
   ],

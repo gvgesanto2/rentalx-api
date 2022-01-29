@@ -43,10 +43,10 @@ class ImportCategoryUseCase {
     fs.promises.unlink(file.path);
 
     loadedCategories.map(async ({ name, description }) => {
-      const existingCategory = this.categoriesRepository.findByName(name);
+      const existingCategory = await this.categoriesRepository.findByName(name);
 
       if (!existingCategory) {
-        this.categoriesRepository.create({
+        await this.categoriesRepository.create({
           name,
           description,
         });

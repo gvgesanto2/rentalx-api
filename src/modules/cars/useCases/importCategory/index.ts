@@ -1,11 +1,12 @@
-import { CategoriesRepository } from "../../repositories/implementations/CategoriesRepository";
+import { TypeormCategoriesRepository } from "../../repositories/implementations/TypeormCategoriesRepository";
 import { ImportCategoryController } from "./ImportCategoryController";
 import { ImportCategoryUseCase } from "./ImportCategoryUseCase";
 
-const categoriesRepository = CategoriesRepository.getInstance();
-const importCategoryUseCase = new ImportCategoryUseCase(categoriesRepository);
-const importCategoryController = new ImportCategoryController(
-  importCategoryUseCase
-);
-
-export { importCategoryController };
+export function getImportCategoryController(): ImportCategoryController {
+  const categoriesRepository = new TypeormCategoriesRepository();
+  const importCategoryUseCase = new ImportCategoryUseCase(categoriesRepository);
+  const importCategoryController = new ImportCategoryController(
+    importCategoryUseCase
+  );
+  return importCategoryController;
+}

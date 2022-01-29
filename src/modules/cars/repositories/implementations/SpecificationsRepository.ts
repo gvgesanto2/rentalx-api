@@ -21,7 +21,7 @@ class SpecificationsRepository implements ISpecificationsRepository {
     return SpecificationsRepository.INSTANCE;
   }
 
-  create({ name, description }: ICreateSpecificationDTO): void {
+  async create({ name, description }: ICreateSpecificationDTO): Promise<void> {
     const specification = new Specification();
 
     Object.assign(specification, {
@@ -33,7 +33,7 @@ class SpecificationsRepository implements ISpecificationsRepository {
     this.specifications.push(specification);
   }
 
-  findByName(name: string): Specification {
+  async findByName(name: string): Promise<Specification> {
     const specificationFound = this.specifications.find(
       (specification) => specification.name === name
     );

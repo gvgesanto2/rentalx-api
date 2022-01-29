@@ -14,8 +14,8 @@ class CreateSpecificationUseCase {
     private specificationsRepository: ISpecificationsRepository
   ) {}
 
-  execute({ name, description }: IRequest): void {
-    const existingSpec = this.specificationsRepository.findByName(name);
+  async execute({ name, description }: IRequest): Promise<void> {
+    const existingSpec = await this.specificationsRepository.findByName(name);
 
     if (existingSpec) {
       throw new Error(
@@ -23,7 +23,7 @@ class CreateSpecificationUseCase {
       );
     }
 
-    this.specificationsRepository.create({
+    await this.specificationsRepository.create({
       name,
       description,
     });

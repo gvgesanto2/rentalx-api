@@ -4,5 +4,11 @@
   "host": "localhost",
   "username": "docker",
   "password": "rentalx",
-  "database": "rentalx-db"
+  "database": "rentalx-db",
+  "migrations": [
+    "./src/database/migrations/*.ts"
+  ],
+  "cli": {
+    "migrationsDir": "./src/database/migrations"
+  }
 }

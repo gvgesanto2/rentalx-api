@@ -16,6 +16,13 @@ class TypeormUsersRepository implements IUsersRepository {
 
     await this.repository.save(newUser);
   }
+
+  async findByEmail(email: string): Promise<User> {
+    const userFound = this.repository.findOne({
+      email,
+    });
+    return userFound;
+  }
 }
 
 export { TypeormUsersRepository };

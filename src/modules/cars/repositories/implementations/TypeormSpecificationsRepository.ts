@@ -13,11 +13,10 @@ class TypeormSpecificationsRepository implements ISpecificationsRepository {
     this.repository = getRepository(Specification);
   }
 
-  async create({ name, description }: ICreateSpecificationDTO): Promise<void> {
-    const newSpecification = this.repository.create({
-      name,
-      description,
-    });
+  async create(
+    dataToCreateSpecification: ICreateSpecificationDTO
+  ): Promise<void> {
+    const newSpecification = this.repository.create(dataToCreateSpecification);
 
     await this.repository.save(newSpecification);
   }

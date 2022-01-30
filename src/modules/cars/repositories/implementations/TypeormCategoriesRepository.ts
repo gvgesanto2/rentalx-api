@@ -13,11 +13,8 @@ class TypeormCategoriesRepository implements ICategoriesRepository {
     this.repository = getRepository(Category);
   }
 
-  async create({ name, description }: ICreateCategoryDTO): Promise<void> {
-    const newCategory = this.repository.create({
-      name,
-      description,
-    });
+  async create(dataToCreateCategory: ICreateCategoryDTO): Promise<void> {
+    const newCategory = this.repository.create(dataToCreateCategory);
 
     this.repository.save(newCategory);
   }

@@ -23,6 +23,11 @@ class TypeormUsersRepository implements IUsersRepository {
     });
     return userFound;
   }
+
+  async findById(userId: string): Promise<User> {
+    const userFound = await this.repository.findOne(userId);
+    return userFound;
+  }
 }
 
 export { TypeormUsersRepository };
